@@ -19,37 +19,37 @@ class HargassnerNumberDescription(NumberEntityDescription):
 
 NUMBER_DESCRIPTIONS: list[HargassnerNumberDescription] = [
     HargassnerNumberDescription(
-        key="room_temperature_heating", name="Température jour", widget_prefix="HEATING_CIRCUIT",
+        key="room_temperature_heating", translation_key="room_temperature_heating", widget_prefix="HEATING_CIRCUIT",
         device_class=NumberDeviceClass.TEMPERATURE, native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         native_min_value=14.0, native_max_value=26.0, native_step=0.5, mode=NumberMode.BOX,
     ),
     HargassnerNumberDescription(
-        key="room_temperature_reduction", name="Température nuit", widget_prefix="HEATING_CIRCUIT",
+        key="room_temperature_reduction", translation_key="room_temperature_reduction", widget_prefix="HEATING_CIRCUIT",
         device_class=NumberDeviceClass.TEMPERATURE, native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         native_min_value=8.0, native_max_value=24.0, native_step=0.5, mode=NumberMode.BOX,
     ),
     HargassnerNumberDescription(
-        key="deactivation_limit_heating", name="Limite désactivation chauffage", widget_prefix="HEATING_CIRCUIT",
+        key="deactivation_limit_heating", translation_key="deactivation_limit_heating", widget_prefix="HEATING_CIRCUIT",
         device_class=NumberDeviceClass.TEMPERATURE, native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         native_min_value=0.0, native_max_value=50.0, native_step=1.0, mode=NumberMode.BOX,
     ),
     HargassnerNumberDescription(
-        key="deactivation_limit_reduction_day", name="Limite désactivation réduit jour", widget_prefix="HEATING_CIRCUIT",
+        key="deactivation_limit_reduction_day", translation_key="deactivation_limit_reduction_day", widget_prefix="HEATING_CIRCUIT",
         device_class=NumberDeviceClass.TEMPERATURE, native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         native_min_value=-40.0, native_max_value=50.0, native_step=1.0, mode=NumberMode.BOX,
     ),
     HargassnerNumberDescription(
-        key="deactivation_limit_reduction_night", name="Limite désactivation réduit nuit", widget_prefix="HEATING_CIRCUIT",
+        key="deactivation_limit_reduction_night", translation_key="deactivation_limit_reduction_night", widget_prefix="HEATING_CIRCUIT",
         device_class=NumberDeviceClass.TEMPERATURE, native_unit_of_measurement=UnitOfTemperature.CELSIUS,
         native_min_value=-40.0, native_max_value=50.0, native_step=1.0, mode=NumberMode.BOX,
     ),
     HargassnerNumberDescription(
-        key="steepness", name="Pente courbe de chauffe", widget_prefix="HEATING_CIRCUIT",
+        key="steepness", translation_key="steepness", widget_prefix="HEATING_CIRCUIT",
         native_unit_of_measurement="", native_min_value=0.2, native_max_value=3.5, native_step=0.05,
         mode=NumberMode.SLIDER, icon="mdi:slope-uphill",
     ),
     HargassnerNumberDescription(
-        key="fuel_stock", name="Stock combustible", widget_prefix="HEATER",
+        key="fuel_stock", translation_key="fuel_stock", widget_prefix="HEATER",
         native_unit_of_measurement="kg", native_min_value=0.0, native_max_value=32000.0,
         native_step=1.0, mode=NumberMode.BOX, icon="mdi:sack",
     ),
@@ -74,7 +74,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
                 continue
             # Use API min/max/step if available
             desc = HargassnerNumberDescription(
-                key=description.key, name=description.name, widget_prefix=description.widget_prefix,
+                key=description.key, translation_key=description.translation_key, widget_prefix=description.widget_prefix,
                 device_class=description.device_class,
                 native_unit_of_measurement=description.native_unit_of_measurement,
                 native_min_value=float(param.get("min", description.native_min_value)),
@@ -91,7 +91,7 @@ class HargassnerNumberEntity(HargassnerEntity, NumberEntity):
     def __init__(self, coordinator, widget_key, param_key, widget_name, description):
         super().__init__(coordinator, widget_key, param_key, f"number_{widget_key}_{description.key}")
         self.entity_description = description
-        self._attr_name = f"{widget_name} {description.name}"
+        self._attr_translation_placeholders = {"widget_name": widget_name}
 
     @property
     def native_value(self):

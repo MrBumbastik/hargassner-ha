@@ -1,0 +1,147 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Verbindung zu Hargassner",
+        "description": "Geben Sie Ihre Zugangsdaten der Hargassner-App ein.",
+        "data": {
+          "email": "E-Mail",
+          "password": "Passwort"
+        }
+      },
+      "installation": {
+        "title": "Anlage auswählen",
+        "description": "Es wurden mehrere Anlagen gefunden. Bitte wählen Sie eine aus.",
+        "data": {
+          "installation_id": "Anlage"
+        }
+      }
+    },
+    "error": {
+      "invalid_auth": "Falsche E-Mail-Adresse oder falsches Passwort.",
+      "cannot_connect": "Verbindung zur Hargassner-API nicht möglich.",
+      "no_installations": "Für dieses Konto wurde keine Anlage gefunden.",
+      "unknown": "Unerwarteter Fehler. Bitte prüfen Sie die Protokolle."
+    },
+    "abort": {
+      "already_configured": "Diese Anlage ist bereits konfiguriert."
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "title": "Hargassner-Optionen",
+        "data": {
+          "scan_interval": "Aktualisierungsintervall (Sekunden)"
+        }
+      }
+    }
+  },
+  "services": {
+    "start_ignition": {
+      "name": "Zündung starten",
+      "description": "Löst die Zündsequenz des Heizkessels aus."
+    }
+  },
+  "entity": {
+    "sensor": {
+      "heater_temp_current": {
+        "name": "{widget_name} Kesseltemperatur"
+      },
+      "heater_temp_target": {
+        "name": "{widget_name} Kesseltemperatur Soll"
+      },
+      "smoke_temperature": {
+        "name": "{widget_name} Abgastemperatur"
+      },
+      "outdoor_temperature": {
+        "name": "{widget_name} Außentemperatur"
+      },
+      "outdoor_temperature_average": {
+        "name": "{widget_name} Außentemperatur (Mittelwert)"
+      },
+      "heater_state": {
+        "name": "{widget_name} Kesselstatus"
+      },
+      "heater_program": {
+        "name": "{widget_name} Programm"
+      },
+      "fuel_stock": {
+        "name": "{widget_name} Brennstoffvorrat"
+      },
+      "efficiency": {
+        "name": "{widget_name} Wirkungsgrad"
+      },
+      "flow_temp_current": {
+        "name": "{widget_name} Vorlauftemperatur"
+      },
+      "flow_temp_target": {
+        "name": "{widget_name} Vorlauftemperatur Soll"
+      },
+      "room_temp_current": {
+        "name": "{widget_name} Raumtemperatur"
+      },
+      "room_temp_target": {
+        "name": "{widget_name} Raumtemperatur Soll"
+      },
+      "circuit_state": {
+        "name": "{widget_name} Kreisstatus"
+      },
+      "pump_active": {
+        "name": "{widget_name} Pumpe aktiv"
+      },
+      "connection_state": {
+        "name": "Verbindungsstatus",
+        "state": {
+          "online": "Online",
+          "offline": "Offline",
+          "unknown": "Unbekannt"
+        }
+      }
+    },
+    "number": {
+      "room_temperature_heating": {
+        "name": "{widget_name} Tagestemperatur"
+      },
+      "room_temperature_reduction": {
+        "name": "{widget_name} Nachttemperatur"
+      },
+      "deactivation_limit_heating": {
+        "name": "{widget_name} Abschaltgrenze Heizen"
+      },
+      "deactivation_limit_reduction_day": {
+        "name": "{widget_name} Abschaltgrenze Absenkung Tag"
+      },
+      "deactivation_limit_reduction_night": {
+        "name": "{widget_name} Abschaltgrenze Absenkung Nacht"
+      },
+      "steepness": {
+        "name": "{widget_name} Heizkurve Steigung"
+      },
+      "fuel_stock": {
+        "name": "{widget_name} Brennstoffvorrat"
+      }
+    },
+    "select": {
+      "circuit_mode": {
+        "name": "{widget_name} Betriebsart Heizkreis",
+        "state": {
+          "MODE_OFF": "Aus",
+          "MODE_AUTOMATIC": "Automatik",
+          "MODE_HEATING": "Heizen",
+          "MODE_REDUCTION": "Absenken",
+          "MODE_BRIDGE_REDUCTION": "Brücke Absenken",
+          "MODE_BRIDGE_HEATING": "Brücke Heizen"
+        }
+      },
+      "pool_heating_mode": {
+        "name": "{widget_name} Betriebsart Schwimmbadheizung",
+        "state": {
+          "POOL_HEATING_OFF": "Aus",
+          "POOL_HEATING_ON": "Ein",
+          "POOL_HEATING_AUTOMATIC": "Automatik"
+        }
+      }
+    }
+  }
+}
